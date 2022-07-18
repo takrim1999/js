@@ -1,0 +1,11 @@
+h1{
+    width: fit-content;
+    height: fit-content;
+    color: brown;
+}
+#canvas{
+    color: black;
+    /* height: 500;
+    width: 600; */
+    background:rgba(137, 43, 226, 0.233);
+}
