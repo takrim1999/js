@@ -1,9 +1,12 @@
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext('2d');
-
 var x = 100;
 var pos = 1;
-
+var y = 300;
+var t = Date.now();
+var ram = 0;
+var test = 0;
+var a = 5;
 function clear(){
     context.clearRect(0,0,600,600);
 }
@@ -19,22 +22,25 @@ function square()
 
 function circle(){
     context.beginPath();
-    context.strokeStyle = 'red';
-    context.arc(300,300,x,0,Math.PI*2);
+    context.strokeStyle = 'blue';
+    context.arc(300,y,x,0,Math.PI*2);
     context.stroke();
-    context.fillStyle = 'red';
+    context.fillStyle = 'blue';
     context.fill();
 };
 
 function animate(){
-    if (x>150 || x < 50){
+    if (x>130 || x < 50){
         pos = pos * (-1);
     }
     clear();
-    square();
     circle();
     x = x + pos;
-    
+    y = y - pos*5;
+    context.font = '50px Arial';
+    context.fillText('Frame Rate : '+ Math.round(1/((Date.now()-t)/1000)) + 'FPS',0,50);
+    t = Date.now();
+    window.requestAnimationFrame(animate);
 }
 
 // text
@@ -56,4 +62,4 @@ function animate(){
 // setInterval(circle,5);
 // setInterval(text,5);
 
-setInterval(animate,10);
+animate();
